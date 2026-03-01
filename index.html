@@ -39,15 +39,13 @@
     <section>
       <h2 class="page-title">Contact</h2>
       <p class="contact-text">For collaboration, speaking opportunities, or general enquiries, feel free to get in touch.</p>
-      <ul class="contact-list">
-        <li><span class="contact-label">Email</span><span class="contact-value"><a href="mailto:athiru512@gmail.com">athiru512@gmail.com</a></span></li>
-        <li><span class="contact-label">LinkedIn</span><span class="contact-value"><a href="#">linkedin.com/in/yourprofile</a></span></li>
-        <li><span class="contact-label">Location</span><span class="contact-value">Your City, Country</span></li>
-      </ul>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted!');">
-        <div class="form-row"><label for="c-name">Name</label><input type="text" id="c-name" required /></div>
-        <div class="form-row"><label for="c-email">Email</label><input type="email" id="c-email" required /></div>
-        <div class="form-row"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" required></textarea></div>
+      <form class="contact-form" action="https://formsubmit.co/athiru512@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from your portfolio" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_next" value="https://haniya-portfolio.vercel.app" />
+        <div class="form-row"><label for="c-name">Name</label><input type="text" name="name" id="c-name" required /></div>
+        <div class="form-row"><label for="c-email">Email</label><input type="email" name="email" id="c-email" required /></div>
+        <div class="form-row"><label for="c-msg">Message</label><textarea name="message" id="c-msg" rows="4" required></textarea></div>
         <button type="submit" class="form-submit">Send Message</button>
       </form>
     </section>
