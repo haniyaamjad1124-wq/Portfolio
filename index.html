@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haniya Amjad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── HEADER ── -->
+  <header>
+    <h1 class="site-name" onclick="switchPage('about')">Haniya Amjad</h1>
+    <nav class="main-nav">
+      <a data-page="about" class="active" onclick="switchPage('about')">About Me</a>
+      <a data-page="case-studies" onclick="switchPage('case-studies')">Case Studies</a>
+      <a data-page="experiments" onclick="switchPage('experiments')">Experiments</a>
+    </nav>
+  </header>
+
+  <!-- ════════════════ ABOUT ME (Home) ════════════════ -->
+  <div id="page-about" class="page active">
+    <section class="bio">
+      <h2 class="page-title">About Me</h2>
+      <p>Haniya Amjad is a Product Manager who partners with business stakeholders and end-users to translate ambiguous problems into clear, actionable product features. She works across Slack channels, Gmail threads, and Google Meet sessions to gather requirements and distil problem statements into well-scoped opportunities.</p>
+      <p>Her approach centres on rapid prototyping. She uses Figma and AI-powered design tools to generate interactive mockups within hours, then presents these prototypes alongside engineering teams to align on scope, track performance, and iterate continuously. The goal is always the same: reduce ambiguity, accelerate decisions, and build the right thing.</p>
+      <p>Before her current role, Haniya built experience across cross-functional product teams, bridging the gap between business stakeholders, design, and engineering. She is passionate about user-centred product development and the intersection of rapid experimentation with disciplined delivery.</p>
+    </section>
+    <div class="separator"></div>
+    <section>
+      <h2 class="page-title">Download My CV</h2>
+      <p class="cv-text">For a detailed overview of education, projects, and professional experience, download the full curriculum vitae below.</p>
+      <a href="#" class="cv-btn" onclick="alert('Replace this href with your CV file path'); return false;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        Download My CV
+      </a>
+    </section>
+    <div class="separator"></div>
+    <section>
+      <h2 class="page-title">Contact</h2>
+      <p class="contact-text">For collaboration, speaking opportunities, or general enquiries, feel free to get in touch.</p>
+      <ul class="contact-list">
+        <li><span class="contact-label">Email</span><span class="contact-value"><a href="mailto:athiru512@gmail.com">athiru512@gmail.com</a></span></li>
+        <li><span class="contact-label">LinkedIn</span><span class="contact-value"><a href="#">linkedin.com/in/yourprofile</a></span></li>
+        <li><span class="contact-label">Location</span><span class="contact-value">Your City, Country</span></li>
+      </ul>
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Form submitted!');">
+        <div class="form-row"><label for="c-name">Name</label><input type="text" id="c-name" required /></div>
+        <div class="form-row"><label for="c-email">Email</label><input type="email" id="c-email" required /></div>
+        <div class="form-row"><label for="c-msg">Message</label><textarea id="c-msg" rows="4" required></textarea></div>
+        <button type="submit" class="form-submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <!-- ════════════════ CASE STUDIES LIST ════════════════ -->
+  <div id="page-case-studies" class="page">
+    <a class="back-btn" onclick="switchPage('about')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> About Me</a>
+    <h2 class="page-title">Case Studies</h2>
+    <p class="page-subtitle">A selection of projects from MBA coursework and professional work — each exploring a different product challenge, from discovery through delivery.</p>
+    <div class="topic-filters" id="cs-filters"></div>
+    <div id="cs-list"></div>
+  </div>
+
+  <!-- ════════════════ EXPERIMENTS LIST ════════════════ -->
+  <div id="page-experiments" class="page">
+    <a class="back-btn" onclick="switchPage('about')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> About Me</a>
+    <h2 class="page-title">Experiments</h2>
+    <p class="page-subtitle">Interests, questions, thoughts, and ideas — from the political and philosophical to the data-driven. A space for the full spectrum of what I think about.</p>
+    <p class="page-epigraph">"The test of a first-rate intelligence is the ability to hold two opposed ideas in mind at the same time and still retain the ability to function." — F. Scott Fitzgerald</p>
+    <div id="exp-list"></div>
+  </div>
+
+  <!-- ════════════════ DETAIL VIEW (dynamic) ════════════════ -->
+  <div id="page-detail" class="page">
+    <a class="back-btn" id="detail-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> <span id="detail-back-label">Back</span></a>
+    <div class="detail-hero-img" id="detail-hero"><span>Image</span></div>
+    <div class="detail-meta">
+      <span class="detail-tag" id="detail-tag"></span>
+      <span id="detail-date" style="font-size:0.82rem;color:var(--muted)"></span>
+    </div>
+    <h2 class="page-title" id="detail-title"></h2>
+    <div id="detail-link-wrap"></div>
+    <div class="detail-body" id="detail-body"></div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p class="footer-copy">&copy; 2026 Haniya Amjad. All rights reserved.</p>
+    <button class="footer-cms-btn" onclick="toggleCMS()" title="Site settings">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+    </button>
+  </footer>
+
+  <!-- ── CMS PANEL ── -->
+  <div class="cms-overlay" id="cms-overlay" onclick="toggleCMS()"></div>
+  <div class="cms-panel" id="cms-panel">
+    <div class="cms-header">
+      <h2>Manage Content</h2>
+      <button class="cms-close" onclick="toggleCMS()">&times;</button>
+    </div>
+    <div class="cms-tabs">
+      <button class="cms-tab active" onclick="switchCMSTab('case-studies')">Case Studies</button>
+      <button class="cms-tab" onclick="switchCMSTab('experiments')">Experiments</button>
+    </div>
+    <div id="cms-content"></div>
+    <button class="cms-add-btn" onclick="openCMSForm()">+ Add New</button>
+    <div class="cms-form" id="cms-form">
+      <input type="hidden" id="cms-edit-id" />
+      <label>Title</label>
+      <input type="text" id="cms-title" placeholder="Project or post title" />
+      <label>Description / Excerpt</label>
+      <textarea id="cms-desc" placeholder="Short summary shown in lists"></textarea>
+      <label>Full Content</label>
+      <textarea id="cms-body" placeholder="Full article or case study body (supports multiple paragraphs)" style="min-height:160px"></textarea>
+      <label>Cover Image</label>
+      <div class="cms-img-upload">
+        <input type="file" id="cms-image" accept="image/*" onchange="handleCMSImage(this)" />
+        <div class="cms-img-preview" id="cms-img-preview" style="display:none">
+          <img id="cms-img-thumb" src="" alt="Preview" />
+          <button class="cms-img-remove" onclick="removeCMSImage()" title="Remove image">&times;</button>
+        </div>
+      </div>
+      <input type="hidden" id="cms-image-data" />
+      <label>Live Dashboard / Link</label>
+      <input type="url" id="cms-link" placeholder="https://app.powerbi.com/... or any live URL" />
+      <div id="cms-tag-row">
+        <label>Tag</label>
+        <select id="cms-tag">
+          <option value="">None</option>
+          <option value="product">Product</option>
+          <option value="business">Business</option>
+          <option value="data-viz">Data Viz</option>
+        </select>
+      </div>
+      <label>Date</label>
+      <input type="text" id="cms-date" placeholder="e.g. March 2026" />
+      <div class="cms-form-actions">
+        <button class="cms-save" onclick="saveCMSItem()">Save</button>
+        <button class="cms-cancel" onclick="closeCMSForm()">Cancel</button>
+      </div>
+    </div>
+    <div style="margin-top:2rem;padding-top:1rem;border-top:1px solid var(--light-grey)">
+      <button onclick="changeCMSPassword()" style="background:none;border:none;font-size:0.78rem;color:var(--muted);cursor:pointer;font-family:var(--sans);text-decoration:underline;text-underline-offset:3px">Change CMS Password</button>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
